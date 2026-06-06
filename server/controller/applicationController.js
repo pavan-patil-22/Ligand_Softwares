@@ -189,7 +189,7 @@ export const submitApplication = async (req, res) => {
           <p>In the meantime, feel free to explore our training programs or view our portfolios on our website.</p>
           
           <div class="button-container">
-            <a href="http://localhost:3000" class="button">Visit Our Portal</a>
+            <a href="ligand-softwares.vercel.app" class="button">Visit Our Portal</a>
           </div>
         </div>
         <div class="footer">

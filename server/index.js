@@ -66,7 +66,7 @@ app.use((err, req, res, next) => {
 
 
 dotenv.config();
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8000;
 const URL = process.env.MONGOURL;
 mongoose
   .connect(URL)

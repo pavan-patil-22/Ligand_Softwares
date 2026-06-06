@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Briefcase, Award, CheckCircle2, ExternalLink } from 'lucide-react';
-import { companyCapabilities, companyDetails, timelineData, companyProjects, testimonialsData } from '../data/mockData';
+import { companyCapabilities, companyDetails, timelineData } from '../data/mockData';
 import Modal from '../components/Modal';
 
 export default function About() {
+  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
   const [isTestimonialOpen, setIsTestimonialOpen] = useState(false);
 
@@ -13,37 +14,40 @@ export default function About() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch("https://ligand-softwares-328p.onrender.com/api/projects");
+        const response = await fetch(`${API_BASE}/api/projects`);
         const data = await response.json();
         if (response.ok && data.projects && data.projects.length > 0) {
           setProjects(data.projects);
         } else {
-          setProjects(companyProjects);
+          setProjects([]);
         }
       } catch (err) {
-        console.error("Failed to load projects, using mock fallback data:", err);
-        setProjects(companyProjects);
+        console.error("Failed to load projects from backend:", err);
+        setProjects([]);
       }
     };
     fetchProjects();
-  }, []);
+  }, [API_BASE]);
 
   // Fetch dynamic testimonials
-  const [testimonials, setTestimonials] = useState(testimonialsData);
+  const [testimonials, setTestimonials] = useState([]);
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await fetch("https://ligand-softwares-328p.onrender.com/api/testimonials");
+        const response = await fetch(`${API_BASE}/api/testimonials`);
         const data = await response.json();
         if (response.ok && data.testimonials && data.testimonials.length > 0) {
           setTestimonials(data.testimonials);
+        } else {
+          setTestimonials([]);
         }
       } catch (err) {
-        console.error("Failed to load testimonials, using mock fallback data:", err);
+        console.error("Failed to load testimonials from backend:", err);
+        setTestimonials([]);
       }
     };
     fetchTestimonials();
-  }, []);
+  }, [API_BASE]);
 
   const handleOpenTestimonial = (testimonial) => {
     setSelectedTestimonial(testimonial);

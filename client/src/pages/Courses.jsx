@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search,  Clock, BarChart, Code2, ChevronDown, ChevronUp, Award, Zap } from 'lucide-react';
-import { coursesData } from '../data/mockData';
 
 export default function Courses({ onEnrollClick }) {
+  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,22 +13,22 @@ export default function Courses({ onEnrollClick }) {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch("https://ligand-softwares-328p.onrender.com/api/courses");
+        const response = await fetch(`${API_BASE}/api/courses`);
         const data = await response.json();
         if (response.ok && data.courses && data.courses.length > 0) {
           setCourses(data.courses);
         } else {
-          setCourses(coursesData);
+          setCourses([]);
         }
       } catch (err) {
-        console.error("Failed to load courses, using mock fallback:", err);
-        setCourses(coursesData);
+        console.error("Failed to load courses from backend:", err);
+        setCourses([]);
       } finally {
         setLoading(false);
       }
     };
     fetchCourses();
-  }, []);
+  }, [API_BASE]);
 
   // Filter Levels: ALL, BEGINNER, INTERMEDIATE, ADVANCED
   const levels = ['ALL', 'BEGINNER', 'INTERMEDIATE', 'ADVANCED'];

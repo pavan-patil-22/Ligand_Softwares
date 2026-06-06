@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronRight, Zap, Code, Shield, Cpu, Globe, Database, Terminal } from 'lucide-react';
-import { servicesData, statsData, whyChooseUsData } from '../data/mockData';
+import { statsData, whyChooseUsData } from '../data/mockData';
 import StatCounter from '../components/StatCounter';
 import * as Icons from 'lucide-react';
 
@@ -126,25 +126,27 @@ export default function Home({ onEnquiryClick, onJoinTrainingClick, onApplyClick
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
   // Fetch dynamic services
   const [services, setServices] = useState([]);
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("https://ligand-softwares-328p.onrender.com/api/services");
+        const response = await fetch(`${API_BASE}/api/services`);
         const data = await response.json();
         if (response.ok && data.services && data.services.length > 0) {
           setServices(data.services);
         } else {
-          setServices(servicesData);
+          setServices([]);
         }
       } catch (err) {
-        console.error("Failed to load services, using fallback mock data:", err);
-        setServices(servicesData);
+        console.error("Failed to load services from backend:", err);
+        setServices([]);
       }
     };
     fetchServices();
-  }, []);
+  }, [API_BASE]);
 
   const floatingIcons = [
     { Icon: Cpu, color: 'text-primary-cyan', top: '15%', left: '10%', delay: 0 },
@@ -155,15 +157,14 @@ export default function Home({ onEnquiryClick, onJoinTrainingClick, onApplyClick
   ];
 
   const techMarqueeItems = [
-    "Full Stack React.js",
+    "MERN Stack",
+    "Full Stack Web-Dev",
     "Python & Django",
     "Java Spring Boot",
     "AWS & Cloud DevOps",
-    "Kubernetes Clusters",
-    "Embedded RTOS Systems",
-    "Cyber Security Audits",
-    "UI/UX Designing",
-    "Industrial IoT Platforms"
+    "Cyber Security ",
+    "Artificial Intelligence",
+    "Internet Of Things (IOT)"
   ];
 
   return (

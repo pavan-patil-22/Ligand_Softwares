@@ -36,6 +36,7 @@ import ManageMessages from './pages/admin/ManageMessages';
 import ChangePassword from './pages/admin/ChangePassword';
 import ConsoleSettings from './pages/admin/ConsoleSettings';
 import axios from "axios";
+import NotFound from './pages/Notfound';
 
 
 // Scroll to Top on route change
@@ -171,7 +172,7 @@ function AppContent() {
       `*Message:* ${message}`;
 
     const encodedText = encodeURIComponent(waText);
-    const waUrl = `https://wa.me/919110413455?text=${encodedText}`;
+    const waUrl = `https://wa.me/918722585715?text=${encodedText}`;
 
     // Open WhatsApp in a new tab
     window.open(waUrl, '_blank');
@@ -286,7 +287,7 @@ function AppContent() {
             <Route path="/courses" element={<AnimatedPage><Courses onEnrollClick={handleOpenJoinTraining} /></AnimatedPage>} />
             <Route path="/career" element={<AnimatedPage><Career onApplyClick={handleOpenApply} /></AnimatedPage>} />
             <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
-            <Route path="/login" element={<AnimatedPage><Login /></AnimatedPage>} />
+            <Route path="/ligandlogin" element={<AnimatedPage><Login /></AnimatedPage>} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<Overview />} />
               <Route path="services" element={<ManageServices />} />
@@ -301,6 +302,8 @@ function AppContent() {
               <Route path="password" element={<ChangePassword />} />
               <Route path="settings" element={<ConsoleSettings />} />
             </Route>
+
+            <Route path='*' element={<NotFound/>}/>
           </Routes>
         </AnimatePresence>
       </main>

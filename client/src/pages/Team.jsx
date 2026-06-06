@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Twitter, Github, Briefcase, Award } from 'lucide-react';
-import { teamData } from '../data/mockData';
 
 export default function Team() {
-  const [team, setTeam] = useState(teamData);
+  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+  const [team, setTeam] = useState([]);
 
   useEffect(() => {
     const fetchTeam = async () => {
       try {
-        const response = await fetch("https://ligand-softwares-328p.onrender.com/api/team");
+        const response = await fetch(`${API_BASE}/api/team`);
         const data = await response.json();
         if (response.ok && data.team && data.team.length > 0) {
           setTeam(data.team);
+        } else {
+          setTeam([]);
         }
       } catch (err) {
-        console.error("Failed to load team members, using mock fallback data:", err);
+        console.error("Failed to load team members from backend:", err);
+        setTeam([]);
       }
     };
     fetchTeam();
-  }, []);
+  }, [API_BASE]);
 
   // Helper check for active links
   const cleanLink = (url) => url && url.trim() !== "" && url.trim() !== "#";
@@ -57,7 +60,7 @@ export default function Team() {
             Meet Our Team
           </h1>
           <p className="text-slate-400 text-sm md:text-base leading-relaxed">
-            Promoted by seasoned Engineers and Technocrats having rich experience in the global software industry and government consultancy programs.
+           Meet the passionate minds driving innovation and excellence.
           </p>
         </div>
 

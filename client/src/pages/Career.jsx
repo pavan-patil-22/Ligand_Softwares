@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, MapPin, Clock, Calendar, GraduationCap, Building2, TrendingUp, Sparkles } from 'lucide-react';
-import { careersData } from '../data/mockData';
+import { Briefcase, MapPin, Clock, Calendar, GraduationCap, } from 'lucide-react';
 
 export default function Career({ onApplyClick }) {
+  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
   const [activeTab, setActiveTab] = useState('JOBS'); // JOBS or INTERNSHIPS
   const [careers, setCareers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,31 +11,22 @@ export default function Career({ onApplyClick }) {
   useEffect(() => {
     const fetchCareers = async () => {
       try {
-        const response = await fetch("https://ligand-softwares-328p.onrender.com/api/careers");
+        const response = await fetch(`${API_BASE}/api/careers`);
         const data = await response.json();
         if (response.ok && data.careers && data.careers.length > 0) {
           setCareers(data.careers);
         } else {
-          // Map mock data into the same schema structure
-          const fallbackCareers = [
-            ...careersData.positions.map(p => ({ ...p, category: 'JOBS' })),
-            ...careersData.internships.map(i => ({ ...i, category: 'INTERNSHIPS' }))
-          ];
-          setCareers(fallbackCareers);
+          setCareers([]);
         }
       } catch (err) {
-        console.error("Failed to load careers, using mock fallback:", err);
-        const fallbackCareers = [
-          ...careersData.positions.map(p => ({ ...p, category: 'JOBS' })),
-          ...careersData.internships.map(i => ({ ...i, category: 'INTERNSHIPS' }))
-        ];
-        setCareers(fallbackCareers);
+        console.error("Failed to load careers from backend:", err);
+        setCareers([]);
       } finally {
         setLoading(false);
       }
     };
     fetchCareers();
-  }, []);
+  }, [API_BASE]);
 
   const jobs = careers.filter(item => item.category === 'JOBS');
   const internships = careers.filter(item => item.category === 'INTERNSHIPS');
@@ -72,42 +63,7 @@ export default function Career({ onApplyClick }) {
           </p>
         </div>
 
-        {/* Career Stats / Placement Panel */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16 max-w-4xl mx-auto">
-          <div className="glass-panel rounded-2xl p-6 border border-white/5 flex items-center gap-4 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-16 h-16 bg-primary-cyan/5 rounded-full blur-xl" />
-            <div className="p-3 rounded-xl bg-primary-cyan/10 border border-primary-cyan/20 text-primary-cyan">
-              <Building2 className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-[10px] font-mono text-slate-400 uppercase block">Active Placements</span>
-              <span className="text-lg font-outfit font-bold text-white">40+ Partner MNCs</span>
-            </div>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-6 border border-white/5 flex items-center gap-4 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-16 h-16 bg-primary-violet/5 rounded-full blur-xl" />
-            <div className="p-3 rounded-xl bg-primary-violet/10 border border-primary-violet/20 text-primary-violet">
-              <TrendingUp className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-[10px] font-mono text-slate-400 uppercase block">Placement Ratio</span>
-              <span className="text-lg font-outfit font-bold text-white">85% Success Rate</span>
-            </div>
-          </div>
-
-          <div className="glass-panel rounded-2xl p-6 border border-white/5 flex items-center gap-4 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-16 h-16 bg-primary-emerald/5 rounded-full blur-xl" />
-            <div className="p-3 rounded-xl bg-primary-emerald/10 border border-primary-emerald/20 text-primary-emerald">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-[10px] font-mono text-slate-400 uppercase block">Incubation Support</span>
-              <span className="text-lg font-outfit font-bold text-white">Student Startup Lab</span>
-            </div>
-          </div>
-        </div>
-
+        
         {/* Tab switch buttons */}
         <div className="flex justify-center mb-12">
           <div className="p-1.5 rounded-2xl bg-white/[0.03] border border-white/5 flex gap-2">

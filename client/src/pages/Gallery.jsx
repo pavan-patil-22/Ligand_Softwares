@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Eye, X, ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
-import { galleryData } from '../data/mockData';
 
 export default function Gallery() {
+  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -29,22 +29,22 @@ export default function Gallery() {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/gallery");
+        const response = await fetch(`${API_BASE}/api/gallery`);
         const data = await response.json();
         if (response.ok && data.gallery && data.gallery.length > 0) {
           setGallery(data.gallery);
         } else {
-          setGallery(galleryData);
+          setGallery([]);
         }
       } catch (err) {
-        console.error("Failed to load gallery, using mock fallback data:", err);
-        setGallery(galleryData);
+        console.error("Failed to load gallery from backend:", err);
+        setGallery([]);
       } finally {
         setLoading(false);
       }
     };
     fetchGallery();
-  }, []);
+  }, [API_BASE]);
 
   // Filter Categories on main page (either ALL or specific subsets)
   const filteredCategories = activeFilter === 'ALL'

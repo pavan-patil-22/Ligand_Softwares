@@ -203,7 +203,7 @@ export const replyMessage = async (req, res) => {
           <p>If you have any further questions or require additional details, feel free to reply directly to this email or visit our portal.</p>
           
           <div class="button-container">
-            <a href="http://localhost:3000" class="button">Visit Our Portal</a>
+            <a href="ligand-softwares.vercel.app" class="button">Visit Our Portal</a>
           </div>
         </div>
         <div class="footer">

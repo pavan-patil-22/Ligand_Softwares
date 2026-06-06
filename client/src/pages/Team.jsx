@@ -99,7 +99,7 @@ export default function Team() {
                     loading="lazy"
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&q=80&w=400";
+                      e.target.src = "https://res.cloudinary.com/dj4tc4ih1/image/upload/v1780754177/team/vf3nqwgx4qtkg2xaj57h.png";
                     }}
                   />
                   {/* Subtle bottom shading gradient */}

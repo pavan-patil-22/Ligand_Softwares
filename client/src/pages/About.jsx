@@ -389,7 +389,7 @@ export default function About() {
                         src={testimonial.image}
                         onError={(e) => {
                           e.target.onerror = null;
-                          e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150";
+                          e.target.src = "https://res.cloudinary.com/dj4tc4ih1/image/upload/v1780754177/team/vf3nqwgx4qtkg2xaj57h.png";
                         }}
                         alt={testimonial.name}
                         className="w-10 h-10 rounded-full object-cover border border-white/10 bg-slate-950"
@@ -433,7 +433,7 @@ export default function About() {
                   src={selectedTestimonial.image}
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150";
+                    e.target.src = "https://res.cloudinary.com/dj4tc4ih1/image/upload/v1780754177/team/vf3nqwgx4qtkg2xaj57h.png";
                   }}
                   alt={selectedTestimonial.name}
                   className="w-16 h-16 rounded-full object-cover border-2 border-primary-cyan shadow-glow-cyan/10"

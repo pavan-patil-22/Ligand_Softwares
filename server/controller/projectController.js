@@ -2,24 +2,7 @@ import Project from "../model/Project.js";
 import cloudinary from "../cloudinary.js";
 
 const DEFAULT_PROJECTS = [
-  {
-    name: "SDVS BCS College Website",
-    desc: "A comprehensive, responsive educational web portal designed for SDVS BCS College, enabling digital notice boards, department management, and smooth academic queries.",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=600",
-    link: "http://www.sdvssbcssnk.com"
-  },
-  {
-    name: "LSM Platform (Ligand Developers Portal)",
-    desc: "Our exclusive Learning Software Management (LSM) platform built to streamline course syllabus delivery, student training portals, and remote collaboration.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600",
-    link: "https://liganddevelopers.vercel.app/"
-  },
-  {
-    name: "AgriTech Inventory System",
-    desc: "An IoT-enabled tracking database and inventory management portal customized for agricultural warehouse cooperatives in Northern Karnataka.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600",
-    link: "https://github.com"
-  }
+  
 ];
 
 // Helper to seed projects if empty

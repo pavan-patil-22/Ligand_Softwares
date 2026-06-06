@@ -2,78 +2,7 @@ import GalleryItem from "../model/GalleryItem.js";
 import cloudinary from "../cloudinary.js";
 
 const DEFAULT_GALLERY_ITEMS = [
-  {
-    title: "Company Events",
-    desc: "Celebrations, annual meetups, achievements, and milestone events of Ligand Softwares.",
-    date: "Dec 2025",
-    coverImage: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=600",
-    images: [
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=600"
-    ]
-  },
-  {
-    title: "Training Sessions",
-    desc: "Classroom and lab training, mentoring programs, and visual interactive lecture sessions.",
-    date: "Jan 2026",
-    coverImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600",
-    images: [
-      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600"
-    ]
-  },
-  {
-    title: "Workshops",
-    desc: "Hands-on tech workshops on cloud services, cyber security practices, and IoT prototyping.",
-    date: "Feb 2026",
-    coverImage: "https://images.unsplash.com/photo-1544928147-79a2bec1638f?auto=format&fit=crop&q=80&w=600",
-    images: [
-      "https://images.unsplash.com/photo-1544928147-79a2bec1638f?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600"
-    ]
-  },
-  {
-    title: "Projects",
-    desc: "Showcasing final year student projects, hardware prototype demos, and industry setups.",
-    date: "Mar 2026",
-    coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
-    images: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1553484771-047a44eee27f?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=600"
-    ]
-  },
-  {
-    title: "Hackathons",
-    desc: "24-hour coding marathons, bug bounty programs, and collaborative speed-programming contests.",
-    date: "April 2026",
-    coverImage: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600",
-    images: [
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&q=80&w=600"
-    ]
-  },
-  {
-    title: "Team Activities",
-    desc: "Team outings, sports meets, dinners, and indoor games to foster innovation and connection.",
-    date: "May 2026",
-    coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600",
-    images: [
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1516062423079-7ca13cca7c5b?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=600",
-      "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&q=80&w=600"
-    ]
-  }
+ 
 ];
 
 // Helper to seed gallery categories if empty

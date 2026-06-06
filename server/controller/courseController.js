@@ -2,75 +2,7 @@ import Course from "../model/Course.js";
 import cloudinary from "../cloudinary.js";
 
 const DEFAULT_COURSES = [
-  {
-    name: "Full Stack Development",
-    duration: "6 Months",
-    level: "Beginner to Advanced",
-    language: "HTML, CSS, JavaScript, React, Node.js, MongoDB",
-    syllabus: [
-      "Web Architecture & Git Foundations",
-      "Semantic HTML & Tailwind CSS layouts",
-      "ES6 Javascript Fundamentals & DOM",
-      "React.js hooks, routing, and context API",
-      "Node.js & Express RESTful API Engineering",
-      "MongoDB database structure and aggregation pipelines",
-      "Testing, CI/CD, and Cloud deployment on AWS"
-    ],
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600",
-    popular: true,
-    certBadge: "NSDC Approved"
-  },
-  {
-    name: "Python Programming",
-    duration: "3 Months",
-    level: "Beginner",
-    language: "Python 3.x, Django, MySQL",
-    syllabus: [
-      "Python Basics, Data structures & functions",
-      "Object-Oriented Programming (OOP) in Python",
-      "File I/O and Standard Libraries",
-      "Database operations with MySQL and SQLite",
-      "Django Web Framework basics & REST Framework",
-      "Web Scraping and automation with Selenium"
-    ],
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=600",
-    popular: false,
-    certBadge: "Ligand certified"
-  },
-  {
-    name: "Java Development",
-    duration: "4 Months",
-    level: "Intermediate",
-    language: "Java Core, Spring Boot, Hibernate, SQL",
-    syllabus: [
-      "Java Virtual Machine (JVM) internals",
-      "Advanced Java Collections and Concurrency",
-      "Relational Databases and Hibernate ORM",
-      "Spring Boot core principles & Spring Security",
-      "Building Microservices and RESTful backends",
-      "Dockerization and unit testing with JUnit"
-    ],
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600",
-    popular: true,
-    certBadge: "Corporate Incubation"
-  },
-  {
-    name: "Data Structures & Algorithms",
-    duration: "4 Months",
-    level: "Intermediate",
-    language: "C++ or Java",
-    syllabus: [
-      "Time and Space Complexity (Big O notation)",
-      "Arrays, Linked Lists, Stacks & Queues",
-      "Trees (Binary, BST, AVL) & Graphs (BFS, DFS)",
-      "Sorting, Searching and Hashing techniques",
-      "Greedy Algorithms and Divide & Conquer",
-      "Dynamic Programming and Graph Algorithms"
-    ],
-    image: "https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&q=80&w=600",
-    popular: false,
-    certBadge: "Competitive Programming"
-  }
+  
 ];
 
 // Helper to seed courses if empty

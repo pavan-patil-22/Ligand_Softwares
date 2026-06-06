@@ -18,8 +18,8 @@ import contactRoutes from "./routes/contactRoutes.js";
 
 const app = express();
 app.use(cors({
-  // origin: true,
-   origin: ["http://localhost:3000" ],
+  origin: true,
+  //  origin: ["http://localhost:3000" ],
   credentials: true
 }));
 app.use(express.json({ limit: "50mb" }));
